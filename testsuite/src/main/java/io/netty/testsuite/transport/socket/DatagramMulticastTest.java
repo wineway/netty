@@ -197,7 +197,8 @@ public class DatagramMulticastTest extends AbstractDatagramTest {
                 Enumeration<InetAddress> addresses = iface.getInetAddresses();
                 while (addresses.hasMoreElements()) {
                     InetAddress address = addresses.nextElement();
-                    if (socketInternetProtocalFamily().addressType().isAssignableFrom(address.getClass())) {
+                    if (socketInternetProtocalFamily().addressType().isAssignableFrom(address.getClass())
+                        && groupInternetProtocalFamily().addressType().isAssignableFrom(address.getClass())) {
                         MulticastSocket socket = new MulticastSocket(newAnySocketAddress());
                         socket.setReuseAddress(true);
                         socket.setNetworkInterface(iface);
